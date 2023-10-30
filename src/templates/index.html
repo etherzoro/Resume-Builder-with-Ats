@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Add Bootstrap CSS CDN link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <title>ATS - Resume Scanner</title>
+</head>
+<body>
+    <div class="container text-center">
+        <h1 class="mt-5">Applicant Tracking System (ATS)</h1>
+        <form action="/" method="post" enctype="multipart/form-data" class="mt-4">
+            <div class="form-group">
+                <label for="job_description">Upload Job Description:</label>
+                <input type="file" name="job_description" accept=".docx, .pdf, .txt" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="resumes">Upload Resumes (Multiple Files):</label>
+                <input type="file" name="resumes" accept=".docx, .pdf, .txt, .jpg, .jpeg, .png" class="form-control" multiple required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <br>
+        <div>
+            <a href="/" class="btn btn-dark mt-3">Home Page</a>
+        </div>
+        <br>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+    <!-- Add Bootstrap JS CDN link (optional) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
